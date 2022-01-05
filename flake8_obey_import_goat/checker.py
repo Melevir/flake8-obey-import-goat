@@ -3,7 +3,7 @@ from typing import Generator, Tuple
 
 from flake8_obey_import_goat import __version__ as version
 from flake8_obey_import_goat.ast_tools import (
-    extract_imports_from, is_import_matches, extract_path_from,
+    extract_imports_from, is_import_matches,
 )
 from flake8_obey_import_goat.rules import collect_rules_for
 
@@ -44,6 +44,6 @@ class ImportsChecker:
             for _import in all_imports:
                 for rule, comment in matching_rules:
                     if is_import_matches(rule, _import):
-                        error_text = f'{extract_path_from(_import)} is forbidden, since {comment}.'
+                        error_text = f'{rule} is forbidden, since {comment}.'
                         yield _import.lineno, _import.col_offset, error_text, type(self)
                         break

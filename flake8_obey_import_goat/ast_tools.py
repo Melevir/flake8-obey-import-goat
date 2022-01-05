@@ -9,7 +9,3 @@ def extract_imports_from(tree: ast.Module) -> list[SomeImport]:
 
 def is_import_matches(rule: str, _import: SomeImport) -> bool:
     return False
-
-
-def extract_path_from(_import: SomeImport) -> str:
-    return ''
