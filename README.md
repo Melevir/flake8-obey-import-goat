@@ -33,7 +33,7 @@ from foo import foo
 forbidden-imports =
     *: datetime.datetime, stdlib modules should be imported as a module
     *: typing.Optional, we use T | None instead of Optional[T]
-    users/*: foo.*, users module should not use foo module
+    users.*: foo.*, users module should not use foo module
 ```
 
 Usage:
@@ -51,4 +51,4 @@ Tested on Python 3.9+ and flake8 4.0+.
 
 | Error code |                     Description          |
 |:----------:|:----------------------------------------:|
-|   OIG001   | <importable> is forbidden, since <reason> |
+|   OIG001   | importable is forbidden, since reason |
