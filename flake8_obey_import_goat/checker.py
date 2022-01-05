@@ -33,4 +33,4 @@ class ImportsChecker:
         cls.forbidden_imports = forbidden_imports
 
     def run(self) -> Generator[Tuple[int, int, str, type], None, None]:
-        return []
+        pass

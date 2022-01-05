@@ -1,7 +1,8 @@
 pytest==6.2.5
 pytest-mock==3.5.1
 
-mypy==0.910
+mypy==0.930
+types-setuptools==57.4.5
 
 pydocstyle==6.1.1
 flake8==4.0.1
