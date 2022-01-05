@@ -3,7 +3,6 @@ import pytest
 from flake8_obey_import_goat.ast_tools import is_import_matches
 
 
-@pytest.mark.xfail
 @pytest.mark.parametrize(
     'import_as_text, rule, expected',
     [
@@ -13,6 +12,11 @@ from flake8_obey_import_goat.ast_tools import is_import_matches
         ('from foo import bar, baz', 'foo.baz', True),
         ('from foo import bar, baz', 'foo.bar', True),
         ('from fuz import bar', 'foo.*', False),
+        ('from fuz import bar', '*.bar', True),
+        ('from fuz import bar', '*.fuz', False),
+        ('from foo.fuz import bar', 'foo.*.bar', True),
+        ('from foo.fuz import bar', 'foo.*.baz', False),
+        ('import foo.fuz.bar', 'foo.*.bar', True),
     ],
 )
 def test_is_import_matches_main_cases(import_as_text, rule, expected, construct_import):
