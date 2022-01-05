@@ -1,8 +1,15 @@
 from typing import Tuple
 
+from flake8_obey_import_goat.pathes import convert_filepath_to_importable
+
 
 def collect_rules_for(filename, all_rules) -> list[Tuple[str, str]]:
-    return []
+    matching_rules = []
+    importable = convert_filepath_to_importable(filename)
+    for import_rule, rules in all_rules.items():
+        if is_rule_matched(importable, import_rule):
+            matching_rules += rules
+    return sorted(set(matching_rules))
 
 
 def is_rule_matched(importable: str, rule: str) -> bool:

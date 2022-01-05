@@ -3,7 +3,6 @@ import pytest
 from flake8_obey_import_goat.rules import collect_rules_for
 
 
-@pytest.mark.xfail
 @pytest.mark.parametrize(
     'filename, expected',
     [
