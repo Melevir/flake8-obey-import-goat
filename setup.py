@@ -20,6 +20,9 @@ def get_long_description() -> str:
         return f.read()
 
 
+version = get_version()
+assert version is not None
+
 setup(
     name=package_name,
     description=(
@@ -42,7 +45,7 @@ setup(
     python_requires='>=3.9',
     include_package_data=True,
     keywords='flake8',
-    version=get_version(),
+    version=version,
     author='Ilya Lebedev',
     author_email='melevir@gmail.com',
     install_requires=['setuptools'],

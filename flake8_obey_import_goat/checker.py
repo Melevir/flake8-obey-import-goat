@@ -27,6 +27,8 @@ class ImportsChecker:
     @classmethod
     def parse_options(cls, options) -> None:
         raw_imports_data = options.forbidden_imports
+        if not raw_imports_data:
+            return
         lines = raw_imports_data.strip().split('\n')
         forbidden_imports = collections.defaultdict(list)
         for line in lines:
@@ -38,6 +40,8 @@ class ImportsChecker:
         cls.forbidden_imports = dict(forbidden_imports)
 
     def run(self) -> Generator[Tuple[int, int, str, type], None, None]:
+        if not self.forbidden_imports:
+            return
         matching_rules = collect_rules_for(self.filename, all_rules=self.forbidden_imports)
         if matching_rules:
             all_imports = extract_imports_from(self.tree)
