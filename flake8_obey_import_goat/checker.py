@@ -44,6 +44,6 @@ class ImportsChecker:
             for _import in all_imports:
                 for rule, comment in matching_rules:
                     if is_import_matches(rule, _import):
-                        error_text = f'{rule} is forbidden, since {comment}.'
+                        error_text = f'OIG001 {rule} is forbidden, since {comment}.'
                         yield _import.lineno, _import.col_offset, error_text, type(self)
                         break

@@ -48,7 +48,7 @@ setup(
     install_requires=['setuptools'],
     entry_points={
         'flake8.extension': [
-            'OIG001 = flake8_obey_import_goat.checker:ImportsChecker',
+            'OIG = flake8_obey_import_goat.checker:ImportsChecker',
         ],
     },
     url='https://github.com/Melevir/flake8-obey-import-goat',

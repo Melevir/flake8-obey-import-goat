@@ -5,7 +5,10 @@ from flake8_obey_import_goat.rules import is_rule_matched
 
 
 def extract_imports_from(tree: ast.Module) -> list[SomeImport]:
-    return []
+    return [
+        n for n in ast.walk(tree)
+        if isinstance(n, (ast.ImportFrom, ast.Import))
+    ]
 
 
 def is_import_matches(rule: str, _import: SomeImport) -> bool:
