@@ -25,6 +25,19 @@ def foo():
 
 # users/bar.py
 from foo import foo
+
+
+# users/domain.py
+def foo():
+    pass
+
+
+# users/implementation.py
+from users.domain import foo
+
+
+# orders/implementation.py
+from users.domain import foo
 ```
 
 ```
@@ -34,6 +47,7 @@ forbidden-imports =
     *: datetime.datetime, stdlib modules should be imported as a module
     *: typing.Optional, we use T | None instead of Optional[T]
     users.*: foo.*, users module should not use foo module
+    *.implementation.*: *.domain.*, implementation layer should not use domain layer
 ```
 
 Usage:
@@ -43,6 +57,9 @@ $ flake8 test.py
 foo.py:1:1: OIG001 datetime.datetime is forbidden, since stdlib modules should be imported as a module.
 foo.py:2:1: OIG001 typing.Optional is forbidden, since we use T | None instead of Optional[T].
 users/bar.py:1:1: OIG001 foo.foo import is forbidden is forbidden, since users module should not use foo module.
+users/implementation.py:1:1: OIG001 *.domain.* import is forbidden is forbidden, since implementation layer should not use domain layer.
+orders/implementation.py:1:1: OIG001 *.domain.* import is forbidden is forbidden, since implementation layer should not use domain layer.
+
 ```
 
 Tested on Python 3.9+ and flake8 4.0+.

@@ -15,6 +15,8 @@ def collect_rules_for(filename, all_rules) -> list[Tuple[str, str]]:
 def is_rule_matched(importable: str, rule: str) -> bool:
     if '*' not in rule:
         match_result = importable == rule
+    elif rule.startswith('*.') and rule.endswith('.*'):
+        match_result = rule[1:-1] in importable
     elif rule.startswith('*.'):
         match_result = importable.endswith(rule[1:])
     elif rule.endswith('.*'):
