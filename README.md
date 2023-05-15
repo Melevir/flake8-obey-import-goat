@@ -62,7 +62,7 @@ orders/implementation.py:1:1: OIG001 *.domain.* import is forbidden is forbidden
 
 ```
 
-Tested on Python 3.9+ and flake8 4.0+.
+Tested on Python 3.8+ and flake8 4.0+.
 
 ## Error codes
 
