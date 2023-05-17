@@ -1,9 +1,9 @@
-from typing import Tuple
+from typing import Tuple, List
 
 from flake8_obey_import_goat.pathes import convert_filepath_to_importable
 
 
-def collect_rules_for(filename, all_rules) -> list[Tuple[str, str]]:
+def collect_rules_for(filename, all_rules) -> List[Tuple[str, str]]:
     matching_rules = []
     importable = convert_filepath_to_importable(filename)
     for import_rule, rules in all_rules.items():
